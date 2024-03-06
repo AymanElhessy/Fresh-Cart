@@ -1,0 +1,17 @@
+<section>
+  <div class="container-fluid">
+    <owl-carousel-o [options]="customOptions">
+      <ng-container *ngFor="let category of allCategory">
+        <ng-template carouselSlide>
+          <img
+            [src]="category.image"
+            [alt]="category.name"
+            [title]="category.name"
+            height="300"
+          />
+          <h3 class="h6">{{ category.name }}</h3>
+        </ng-template>
+      </ng-container>
+    </owl-carousel-o>
+  </div>
+</section>

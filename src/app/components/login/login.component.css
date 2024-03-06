@@ -1,0 +1,6 @@
+.forget {
+  transition: color 0.5s;
+}
+.forget:hover {
+  color: var(--main-color);
+}

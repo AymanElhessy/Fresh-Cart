@@ -1,0 +1,30 @@
+<section>
+  <div class="container my-5">
+    <div class="d-flex align-items-center justify-content-center mb-4">
+      <div class="line me-3"></div>
+      <h1 class="text-center fw-bold text-main">All Brands</h1>
+      <div class="line ms-3"></div>
+    </div>
+    <div class="row g-4">
+      <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let brand of allBrands">
+        <div
+          class="product text-center cursor-pointer"
+          (click)="displaySpceficBrand(brand._id)"
+        >
+          <img [src]="brand.image" class="w-100" [alt]="brand.name" />
+          <h3 class="h5 text-main fw-bold my-3">{{ brand.name }}</h3>
+        </div>
+      </div>
+      <div *ngIf="specificBrand">
+        <div class="text-center bg-main-light p-4 shadow w-50 mx-auto">
+          <h3 class="text-main">{{ specificBrand.name }}</h3>
+          <img
+            class="w-100"
+            [src]="specificBrand.image"
+            [alt]="specificBrand.name"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

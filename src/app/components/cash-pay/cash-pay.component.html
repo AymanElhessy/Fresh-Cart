@@ -1,0 +1,93 @@
+<section
+  class="checkout bg-main-light p-4 my-5 rounded-3 shadow-sm w-50 mx-auto"
+>
+  <div class="d-flex align-items-center justify-content-center mb-4">
+    <div class="line me-3"></div>
+    <h1 class="text-center fw-bold text-main">Cash Payment</h1>
+    <div class="line ms-3"></div>
+  </div>
+  <form [formGroup]="checkOut" (ngSubmit)="handelForm()">
+    <div>
+      <label for="details">Details</label>
+      <textarea
+        name="details"
+        id="details"
+        class="form-control"
+        formControlName="details"
+      ></textarea>
+      <div
+        class="alert alert-danger mt-3"
+        *ngIf="
+          (checkOut.get('details')?.touched ||
+            checkOut.get('details')?.value.length > 0) &&
+          checkOut.get('details')?.errors
+        "
+      >
+        <p class="m-0" *ngIf="checkOut.get('details')?.getError('required')">
+          Details Is Required
+        </p>
+        <p class="m-0" *ngIf="checkOut.get('details')?.getError('minlength')">
+          Min Length Should be 5
+        </p>
+        <p class="m-0" *ngIf="checkOut.get('details')?.getError('maxlength')">
+          Max Length Should be 100
+        </p>
+      </div>
+    </div>
+    <div class="my-3">
+      <label for="phone">Phone</label>
+      <input
+        type="tel"
+        name="phone"
+        id="phone"
+        class="form-control"
+        formControlName="phone"
+      />
+
+      <div
+        class="alert alert-danger mt-3"
+        *ngIf="
+          (checkOut.get('phone')?.touched ||
+            checkOut.get('phone')?.value.length > 0) &&
+          checkOut.get('phone')?.errors
+        "
+      >
+        <p class="m-0" *ngIf="checkOut.get('phone')?.getError('required')">
+          Phone Is Required
+        </p>
+        <p class="m-0" *ngIf="checkOut.get('phone')?.getError('pattern')">
+          Accept Only Egypt Phone Numbers
+        </p>
+      </div>
+    </div>
+    <div>
+      <label for="city">city</label>
+      <input
+        type="text"
+        name="city"
+        id="city"
+        class="form-control"
+        formControlName="city"
+      />
+      <div
+        class="alert alert-danger mt-3"
+        *ngIf="
+          (checkOut.get('city')?.touched ||
+            checkOut.get('city')?.value.length > 0) &&
+          checkOut.get('city')?.errors
+        "
+      >
+        <p class="m-0" *ngIf="checkOut.get('city')?.getError('required')">
+          City Is Required
+        </p>
+        <p class="m-0" *ngIf="checkOut.get('city')?.getError('minlength')">
+          Min Length Should be 3
+        </p>
+        <p class="m-0" *ngIf="checkOut.get('city')?.getError('maxlength')">
+          Max Length Should be 20
+        </p>
+      </div>
+    </div>
+    <button class="btn-main mt-3 w-100">Pay Now</button>
+  </form>
+</section>

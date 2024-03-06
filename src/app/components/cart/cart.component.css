@@ -1,0 +1,8 @@
+.btn-update {
+  border: 1px solid var(--main-color);
+}
+.btn-update:hover {
+  color: #fff;
+  background-color: var(--main-color);
+  border: 1px solid #fff;
+}

@@ -1,0 +1,48 @@
+<section class="my-4">
+  <div class="container">
+    <div class="d-flex align-items-center justify-content-center mb-4">
+      <div class="line me-3"></div>
+      <h1 class="text-center fw-bold text-main">All Orders</h1>
+      <div class="line ms-3"></div>
+    </div>
+    <div
+      *ngFor="let product of allProducts"
+      class="product w-75 mx-auto bg-main-light my-3 p-3"
+    >
+      <div class="d-flex justify-content-between align-items-center">
+        <h2 class="h5">
+          Total Order Price:
+          <span class="text-main">{{
+            product.totalOrderPrice | currency : "EGP "
+          }}</span>
+        </h2>
+        <h4 class="h5">
+          payment Method Type:
+          <span class="text-main">
+            {{ product.paymentMethodType }}
+          </span>
+        </h4>
+      </div>
+      <p>Order Time: {{ product.updatedAt | date : "short" }}</p>
+      <div
+        class="row align-items-center p-3 border-bottom"
+        *ngFor="let item of product.cartItems"
+      >
+        <div class="col-md-1">
+          <img
+            [src]="item.product.imageCover"
+            class="w-100"
+            [alt]="item.product.title"
+          />
+        </div>
+        <div class="col-md-11 d-flex justify-content-between">
+          <div>
+            <h2 class="h5">{{ item.product.title | termText : 4 }}</h2>
+            <p class="text-main">Count : {{ item.count }}</p>
+          </div>
+          <p>{{ item.price | currency : " EGP " }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

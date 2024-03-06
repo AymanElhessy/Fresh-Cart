@@ -1,0 +1,83 @@
+<section>
+  <div class="container position-relative my-5">
+    <div class="d-flex align-items-center justify-content-center mb-4">
+      <div class="line me-3"></div>
+      <h1 class="text-center fw-bold text-main">All Categories</h1>
+      <div class="line ms-3"></div>
+    </div>
+    <div class="row g-4 justify-content-center">
+      <div class="col-md-6 col-lg-4" *ngFor="let catrgory of allCategries">
+        <div
+          class="category border border-1 rounded-3 cursor-pointer"
+          (click)="displaySpecificCategry(catrgory._id, catrgory.name)"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+        >
+          <img
+            [src]="catrgory.image"
+            [alt]="catrgory.name"
+            class="w-100"
+            height="350"
+          />
+          <h3 class="my-3 text-center fw-bolder text-main">
+            {{ catrgory.name }}
+          </h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="text-center w-50 mx-auto bg-main-light rounded-3 shadow-sm p-4"
+    *ngIf="specificCategory"
+  >
+    <h2 class="fw-bold text-main">{{ categoryName }} Sub Categories</h2>
+    <h3>Number Of Items : {{ specificCategory.results }}</h3>
+    <span
+      class="d-inline-block m-3 p-2 alert alert-success"
+      *ngFor="let item of specificCategory.data"
+    >
+      {{ item.name }}
+    </span>
+  </div>
+
+  <!-- ? ****************************Modal**************************** -->
+  <!-- <div
+    *ngIf="specificCategory"
+    class="modal fade"
+    id="exampleModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title h4" id="exampleModalLabel">
+            {{ categoryName }} Sub Categories
+          </h1>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <h3>Number Of Items : {{ specificCategory.results }}</h3>
+          <ol>
+            <li *ngFor="let item of specificCategory.data">{{ item.name }}</li>
+          </ol>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div> -->
+</section>
